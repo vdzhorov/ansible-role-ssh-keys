@@ -1,0 +1,6 @@
+---
+
+from_ips:
+  - '127.0.0.1' #Replace or add your from_ips
+
+user: 'root'

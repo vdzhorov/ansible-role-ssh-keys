@@ -1,0 +1,12 @@
+---
+
+- name: Set up SSH keys
+  authorized_key:
+    key: "{{ lookup('file', item) }}"
+    user: "{{ user }}"
+    state: present
+    exclusive: no
+    key_options: "from=\"{{ from_ips|join(',') }}\""
+    manage_dir: yes
+    comment: "{{ item.split('/')[-1].split('.')[0] }}"
+  with_fileglob: "public_keys/*.pub"
